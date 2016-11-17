@@ -1,0 +1,37 @@
+<ion-view>
+
+  <ion-content>
+
+    <label class="item item-input">
+      <input class="tituloDetalle" type="text" placeholder="Título" ng-model="listaDetalleCtrl.lista.titulo">
+    </label>
+
+    <ion-list>
+      <ion-item ng-repeat="item in listaDetalleCtrl.lista.items">
+
+        <div on-swipe-left="listaDetalleCtrl.eliminarItem(item)" on-swipe-right="listaDetalleCtrl.eliminarItem(item)" class="row">
+
+          <div class="col col-20">
+            <label class="checkbox">
+              <input type="checkbox" ng-model="item.hecho">
+            </label>
+          </div>
+
+          <div class="col col-80">
+            <label class="item-borderless item item-input">
+              <input type="text" placeholder="Item" ng-model="item.descripcion">
+            </label>
+          </div>
+
+        </div>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+  <button class="button button-balanced ion-plus-round botonAgregar" ng-click="listaDetalleCtrl.agregarItem()"/>
+
+</ion-view>
+
+

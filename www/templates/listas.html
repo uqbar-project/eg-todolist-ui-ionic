@@ -1,0 +1,27 @@
+<ion-view view-title="Mis Listas">
+
+  <ion-content>
+    <div class="list">
+
+      <div on-swipe-right="listaCtrl.eliminarLista(lista)" on-swipe-left="listaCtrl.eliminarLista(lista)" class="item item-button-right" ng-repeat="lista in listaCtrl.listas" ui-sref="lista({listaId: lista.id})">
+
+        <h2 style="font-weight: bold;" ng-class="{completa: lista.estaCompleta(), enProgreso: lista.estaEnProgreso(), pendiente: lista.estaPendiente()}">
+          {{lista.titulo? lista.titulo: "Lista sin nombre"}}
+        </h2>
+        <p>
+          {{lista.getEstado()}}
+        </p>
+
+        <button class="button button-clear" ng-click="$event.stopPropagation(); listaCtrl.toggleImportante(lista)">
+          <span ng-class="{'icon ion-alert-circled': true, 'importanteMarcado' : lista.importante}"/>
+        </button>
+
+      </div>
+    </div>
+
+  </ion-content>
+
+  <button class="button button-balanced ion-plus-round botonAgregar" ng-click="listaCtrl.agregarLista()"/>
+
+
+</ion-view>
